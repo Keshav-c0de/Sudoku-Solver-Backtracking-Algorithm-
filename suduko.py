@@ -1,3 +1,6 @@
+import webscraping
+
+
 def get_empty_space(puzzle):
     for r in range (9):
         for c in range (9):
@@ -41,27 +44,21 @@ def solve_puzzle(puzzle):
             if solve_puzzle(puzzle):   #recursion
                 return True
 
-        puzzle[row][col] = -1 
+        puzzle[row][col] = -1          # backtracking (pops the previous guess      value and loop move on) The address of my git init is really wide, it's
 
-    return False
+    return False  
 
 
 if __name__ =="__main__":
-    example_board = [
-        [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
-        [-1, -1, -1,   2, -1, -1,   -1, -1, 5],
-        [-1, -1, -1,   7, 1, 9,   -1, 8, -1],
 
-        [-1, 5, -1,   -1, 6, 8,   -1, -1, -1],
-        [2, -1, 6,   -1, -1, 3,   -1, -1, -1],
-        [-1, -1, -1,   -1, -1, -1,   -1, -1, 4],
+    input_board =  webscraping.main()
 
-        [5, -1, -1,   -1, -1, -1,   -1, -1, -1],
-        [6, 7, -1,   1, -1, 5,   -1, 4, -1],
-        [1, -1, 9,   -1, -1, -1,   2, -1, -1]
-    ]
-    print(solve_puzzle(example_board))
-    print(example_board)
+    if solve_puzzle(input_board):
+        print("--------Solution--------")
+        for row in input_board:
+            print(row)
+    else:
+        print("No Solution exists")
 
 
 
