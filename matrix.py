@@ -8,9 +8,3 @@ def get_matrix():
             value= int(input(f"enter the value for {r}:{c}-> "))
             input_board[r][c] = value
     return input_board
-
-
-if __name__ == "__main__":
-    my_grid = get_matrix()
-    print("martix received!")        
-

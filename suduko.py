@@ -31,7 +31,7 @@ def is_valid(puzzle,guess,row,col):
 
 
 
-def solve_puzzle(puzzle):
+def solve_puzzle_steps(puzzle):
 
     row, col = get_empty_space(puzzle)
     if row == None:
@@ -39,14 +39,18 @@ def solve_puzzle(puzzle):
 
     for guess in range(1,10):
         if is_valid(puzzle,guess,row,col):
-            puzzle[row][col]= guess      
+            puzzle[row][col] = guess 
+            yield puzzle     
 
-            if solve_puzzle(puzzle):   #recursion
+            if (yield from solve_puzzle_steps(puzzle)):                                                           #recursion
                 return True
 
-        puzzle[row][col] = -1          # backtracking (pops the previous guess      value and loop move on) The address of my git init is really wide, it's
+            puzzle[row][col] = -1          # backtracking (pops the previous guess      value and loop move on) 
+            yield puzzle
 
     return False  
+
+
 
 
 if __name__ =="__main__":
@@ -58,8 +62,4 @@ if __name__ =="__main__":
         for row in input_board:
             print(row)
     else:
-        print("No Solution exists")
-
-
-
-    
+        print("No Solution exists") 
