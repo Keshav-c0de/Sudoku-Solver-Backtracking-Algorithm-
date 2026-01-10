@@ -19,8 +19,8 @@ def extart_value():
         cheat_input = soup_2.find("input", {'id': 'cheat'})
         edit_mask_input = soup_2.find("input", {'id': 'editmask'}) 
         if cheat_input and  edit_mask_input:
-            #print(cheat_input)
-            #print(edit_mask_input)
+            print(cheat_input)
+            print(edit_mask_input)
             value = cheat_input.get("value")
             hidden_value = edit_mask_input.get("value")
             return value, hidden_value
