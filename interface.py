@@ -6,12 +6,21 @@ import copy
 import os 
 import time
 
+def get_asset_path(relative_path):
+    try:
+        # If running as an app (PyInstaller)
+        base_path = sys._MEIPASS
+    except Exception:
+        # If running in VS Code, use the directory of the script
+        base_path = os.path.dirname(os.path.realpath(__file__))
+    return os.path.join(base_path, relative_path)
+
 # ---- getting option image ----
-solution_button = pygame.image.load(os.path.join("Assets","interrogation.png"))
-pause_button = pygame.image.load(os.path.join("Assets","pause.png"))
-play_button = pygame.image.load(os.path.join("Assets","play.png"))
-next_button = pygame.image.load(os.path.join("Assets","right.png"))
-reset_button = pygame.image.load(os.path.join("Assets","refresh.png"))
+solution_button = pygame.image.load(get_asset_path(os.path.join("Assets","interrogation.png")))
+pause_button = pygame.image.load(get_asset_path(os.path.join("Assets","pause.png")))
+play_button = pygame.image.load(get_asset_path(os.path.join("Assets","play.png")))
+next_button = pygame.image.load(get_asset_path(os.path.join("Assets","right.png")))
+reset_button = pygame.image.load(get_asset_path(os.path.join("Assets","refresh.png")))
 
 
 input_board=webscraping.main()

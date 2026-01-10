@@ -1,0 +1,3 @@
+([('interface',
+   '/Users/keshavbhardwaj/Desktop/sudoku_game/dist/interface',
+   'EXECUTABLE')],)
