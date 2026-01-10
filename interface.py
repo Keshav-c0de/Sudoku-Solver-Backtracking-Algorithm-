@@ -119,6 +119,7 @@ def reset():
 
 def solve():
     global solver_generator
+    reset()
     solver_generator=suduko.solve_puzzle_steps(input_board)
     
 
@@ -234,7 +235,7 @@ while running:
 
     else:
     # --- Game is won: Use the frozen time ---
-        time_text = final_time_str
+        final_time_str = time_text
     
     text_surface = font_2.render(time_text, True, (0,0,0))
     text_surface_rect = text_surface.get_rect()
